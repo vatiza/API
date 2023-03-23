@@ -9,7 +9,7 @@ const displayUser = user => {
    
     const name = user.results[0].name.first + ' '+ user.results[0].name.last;
     document.getElementById('name').innerHTML = name;
-    console.log(user.results[0].name)
+    console.log(user.results[0].name);
 }
 
 loadUser(); 
