@@ -3,7 +3,7 @@ const loadMeals=(searchText)=>{
    console.log(url);
     fetch(url)
     .then(res=>res.json())
-    .then(data=>displayMeals(data.meals))
+         .then(data=>displayMeals(data.meals))
 
 }
 
