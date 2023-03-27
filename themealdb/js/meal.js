@@ -22,7 +22,7 @@ const displayMeals=meals=>{
         <h5 class="card-title">${meal.strMeal}</h5>
         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
             content. This content is a little bit longer.</p>
-            <button onclick="loadMealDetail(${meal.idMeal})" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mealsDetails">
+            <button onclick="loadMealDetail2(${meal.idMeal})" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mealsDetails">
 Details
     </div>
 </div>
@@ -32,7 +32,7 @@ Details
 }
 const searchMeals=()=>{
    const searchText=document.getElementById('search-field').value;
-//    serchMeals
+//    searchMeals
    console.log(searchText);
    loadMeals(searchText);
 }
@@ -42,9 +42,24 @@ const loadMealDetail=idMeal=>{
 fetch(url)
 .then(res=>res.json())
 .then(data=>displayMealDetail(data.meals[0]))
-    console.log(idMeal)
+.catch(error => {
+    console.log("Error:", error);
+
+})
+}
+// async control
+const loadMealDetail2=async(idMeal)=>{
+    const url=`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`
+try{
+    const res=await fetch(url);
+    const data= await res.json();
+    displayMealDetail(data.meals[0]);
+}catch(error){
+console.log(error);
+}
 
 }
+
 const displayMealDetail=meal=>{
 document.getElementById('mealsDetailsLabel').innerText=meal.strMeal;
 const mealDetails=document.getElementById('mealDetailBody');
