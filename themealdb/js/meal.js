@@ -1,5 +1,7 @@
-const loadMeals=()=>{
-    fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=fish')
+const loadMeals=(searchText)=>{
+    const url=`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchText}`
+   console.log(url);
+    fetch(url)
     .then(res=>res.json())
     .then(data=>displayMeals(data.meals))
 
@@ -8,6 +10,7 @@ const loadMeals=()=>{
 const displayMeals=meals=>{
     // console.log(meals);
     const mealsContainer=document.getElementById('meals-container');
+    mealsContainer.innerText='';
     meals.forEach(meal=>{
         console.log(meal)
         const mealDiv=document.createElement('div');
@@ -29,7 +32,8 @@ const searchMeals=()=>{
    const searchText=document.getElementById('search-field').value;
 //    serchMeals
    console.log(searchText);
+   loadMeals(searchText);
 }
 
 
-loadMeals();
+loadMeals('rice');
