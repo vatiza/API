@@ -16,6 +16,7 @@ const displayCountries = countries => {
         countryDiv.innerHTML=`
         <h3>Name: ${country.name.common}</h3>
         <p>Capital: ${country.capital ? country.capital[0]: 'No Capital'}</p>
+        <button>Details</button>
         `;
         countriesContainer.appendChild(countryDiv);
     })
